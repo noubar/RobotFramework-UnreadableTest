@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     A test suite shows how to keep robot test readable.
+Documentation     This test suite shows how to keep robot tests readable.
 ...  Suppose we are given a keyword that proves whether the given server is reachable.
 ...  The test case says:
 ...  Either the servers (S1 and S2) or (S3 and S4 and (S7 or S8 or S9)) or S5 or S6 need to be reachable.
@@ -9,9 +9,9 @@ Documentation     A test suite shows how to keep robot test readable.
 ...  
 ...  What if we make several keywords checking individualy each group.
 ...  So we can let robot test readable as much as possible. 
-...  Divide and conquer. 
-...  Abstract the logic to simple chunks Keywords So you keep the test readable.
-...  The abstraction is the only way that a robot test can remain readable. 
+...  *Divide and conquer*
+...  Abstract the logic to simple chunks of keywords So you keep the test readable.
+...  This way of abstraction is the only way to keep tests readable in robot.
 
 
 *** Variables ***
@@ -66,7 +66,7 @@ S3 And S4 And (S7 Or S8 Or S9) Reachable
     IF  ${status}==True
         Pass Execution    S9 is reachable
     END
-    Fail  Not Reachable
+    Fail  Servers Not Reachable
 
 *** Test Cases ***
 Still Readable Test Case
@@ -77,7 +77,7 @@ Still Readable Test Case
 # have all the neccessary action keywords within the test case without abstracting them.
 # A test case without abstracted keywords may look like as the following./
 
-Not Reachable Test Case
+Not Readable Test Case
     ${status1}  Run Keyword And Return Status    Is Reachable  $S1
     ${status2}  Run Keyword And Return Status    IS Reachable  $S2
     IF  ${status1}==True and ${status2}==True
@@ -105,9 +105,8 @@ Not Reachable Test Case
     IF  ${status}==True
         Pass Execution    S9 is reachable
     END
-    Fail  Not Reachable
+    Fail  Servers Not Reachable
 
-# There are of course many other ways to write 
-# but no single one of them will remain readable
-
-# the first variant for sure is better way to go.
+# There are of course many other ways to write
+# but no single one of those will keep the test readable as much as the first case does.
+# So the first variant for sure is better way to go.
