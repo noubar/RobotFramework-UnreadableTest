@@ -1,3 +1,3 @@
 # RobotFramework-UnreadableTest
-Demonstration: how robot language can lose its readability.
-               how transparancy and readability are in inverse correlation.
+Demonstration: 1. how robot language can lose its readability.
+               2. how transparancy and readability are in inverse correlation.
