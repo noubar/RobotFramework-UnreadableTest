@@ -79,7 +79,7 @@ Still Readable Test Case
 
 Not Readable Test Case
     ${status1}  Run Keyword And Return Status    Is Reachable  $S1
-    ${status2}  Run Keyword And Return Status    IS Reachable  $S2
+    ${status2}  Run Keyword And Return Status    Is Reachable  $S2
     IF  ${status1}==True and ${status2}==True
         Pass Execution    S1 and S2 are reachable
     END
