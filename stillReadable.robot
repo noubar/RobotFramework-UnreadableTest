@@ -73,13 +73,13 @@ Still Readable Test Case
     [Documentation]
     (S1 and S2) or (S3 and S4 and (S7 or S8 or S9)) or S5 or S6 Reachable
 
-# currently there is no possible way to remain readable and still
-# have all the neccessary action keywords within the test case without abstracting them.
+# currently there is no possible way to remain readable and still have all the neccessary action keywords
+#  within the test case without abstracting them (transparency).
 # A test case without abstracted keywords may look like as the following./
 
 Not Readable Test Case
     ${status1}  Run Keyword And Return Status    Is Reachable  $S1
-    ${status2}  Run Keyword And Return Status    IS Reachable  $S2
+    ${status2}  Run Keyword And Return Status    Is Reachable  $S2
     IF  ${status1}==True and ${status2}==True
         Pass Execution    S1 and S2 are reachable
     END
