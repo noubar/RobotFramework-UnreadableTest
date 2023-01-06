@@ -7,12 +7,16 @@ Documentation     This test suite shows how to keep robot tests readable.
 ...  If not then the second goup can be checked (S3 and S4 and (S7 or S8 or S9)) 
 ...  If not then S5 If not then S6.
 ...  
-...  What if we make several keywords checking individualy each group.
-...  So we can let robot test readable as much as possible. 
-...  *Divide and conquer*
-...  Abstract the logic to simple chunks of keywords So you keep the test readable.
+...  What if we make several keywords to check each group individualy .
+...  So we can let robot test remain readable as much as possible. 
+...  *Divide and conquer* Methode
+...  Abstract the logic to simple chunks of keywords so we keep the test readable.
 ...  This way of abstraction is the only way to keep tests readable in robot.
 
+...  Otherwise we are integrating the Behavior Tree in Robot Framework as a Library
+...  It can also serve as an alternative solution.
+
+Library    BehaviorTreeLibrary
 
 *** Variables ***
 ${S1}  fe80::aede::1121
@@ -110,3 +114,20 @@ Not Readable Test Case
 # There are of course many other ways to write
 # but no single one of those will keep the test readable as much as the first case does.
 # So the first variant for sure is better way to go.
+
+# Behavior Tree Could also help see the following equivalent test case written with the help of
+# Behavior Tree Library
+Behavior Tree Test Case
+    One Should Pass
+    ...  -  All Should Pass
+    ...  -  -  S1 Is Reachable
+    ...  -  -  S2 Is Reachable
+    ...  -  All Should Pass
+    ...  -  -  S3 Is Reachable
+    ...  -  -  S4 Is Reachable
+    ...  -  -  One Should Pass
+    ...  -  -  - S7 Is Reachable
+    ...  -  -  - S8 Is Reachable
+    ...  -  -  - S9 Is Reachable
+    ...  -  S5 Is Reachable
+    ...  -  S6 Is Reachable
