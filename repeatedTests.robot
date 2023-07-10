@@ -50,8 +50,8 @@ One Reachable Ors
 (${SERVER1} and ${SERVER2}) or (${SERVER3} and ${SERVER4} and (${SERVER5} or ${SERVER6} or ${SERVER7})) or ${SERVER8} or ${SERVER9} Reachable
     ${status}  Run Keyword And Return Status    All Reachable Ands  ${SERVER1}  ${SERVER2}
     Return From Keyword If   ${status}==True
-    ${status1}  Run Keyword And Return Status    All Reachable Ands  ${SERVER3}  ${SERVER4}
-    ${status2}  Run Keyword And Return Status    One Reachable Ors  ${SERVER5}  ${SERVER6}  ${SERVER7}
+    ${status1}  Run Keyword And Return Status   All Reachable Ands  ${SERVER3}  ${SERVER4}
+    ${status2}  Run Keyword And Return Status   One Reachable Ors  ${SERVER5}  ${SERVER6}  ${SERVER7}
     Return From Keyword If   ${status1}==True and ${status2}==True
     ${status}  Run Keyword And Return Status    Is Reachable  ${SERVER8}
     Return From Keyword If   ${status}==True
@@ -74,16 +74,17 @@ Not Readable But Good Abstracted Test Cases 1 2 3
 # Not sugested
 
 Not Templated Readable Test Case 1
-    (S1 and S2) or (S3 and S4 and (S7 or S8 or S9)) or S5 or S6 Reachable  # should be individualy implemented
+    (S1 and S2) or (S3 and S4 and (S7 or S8 or S9)) or S5 or S6 Reachable  # should be individualy implemented (not yet implemented)
 
 Not Templated Readable Test Case 2
-    (S1 and S3) or (S2 and S4 and (S7 or S8 or S9)) or S5 or S6 Reachable  # should be individualy implemented
+    (S1 and S3) or (S2 and S4 and (S7 or S8 or S9)) or S5 or S6 Reachable  # should be individualy implemented (not yet implemented)
 
 Not Templated Readable Test Case 3
-    (S1 and S4) or (S3 and S2 and (S7 or S8 or S5)) or S9 or S6 Reachable  # should be individualy implemented
+    (S1 and S4) or (S3 and S2 and (S7 or S8 or S5)) or S9 or S6 Reachable  # should be individualy implemented (not yet implemented)
 
-# This approach is better readable (relatively) and the conrable trancparency level
-# But it is harder to implement, which also will require to repeat yourself (redundant code).
-# There are of course many other ways to write
+# Template (first approach) is the way to go
+# Pros: No redundant code, Easier and faster to write, No transparency difference.
+# Contras: Less readable.
+
 # There are also other ways to implement it but no single one of those will keep the test as simple as the first case does.
 # So the first variant for sure is better way to go.
